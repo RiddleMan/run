@@ -12,15 +12,10 @@ if [ -z "$commit_to_tag" ]; then
   commit_to_tag=$(git rev-parse HEAD)
 fi
 
-echo "Tagging commit: $commit_to_tag with version: $version"
-git tag "v$version" "$commit_to_tag"
-git push origin "v$version"
-
 dist_dir="$root/dist"
+source_archive_name="$dist_dir/run-$version.tar.gz"
 
 mkdir -p "$dist_dir"
-
-source_archive_name="$dist_dir/run-$version.tar.gz"
 
 echo "Creating artifacts"
 tar -czvf "$source_archive_name" \
@@ -28,3 +23,7 @@ tar -czvf "$source_archive_name" \
   "$root/install.sh" \
   "$root/README.md"
 sha256sum "$source_archive_name" >"$dist_dir/checksum"
+
+echo "Tagging commit: $commit_to_tag with version: $version"
+git tag "v$version" "$commit_to_tag"
+git push origin "v$version"
