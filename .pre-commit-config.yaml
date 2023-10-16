@@ -2,17 +2,17 @@
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
 - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
-  rev: '2.3.54'
+  rev: '2.7.3'
   hooks:
     - id: editorconfig-checker
       alias: ec
 - repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v4.0.1
+  rev: v4.5.0
   hooks:
     - id: check-yaml
     - id: check-added-large-files
 - repo: https://github.com/jumanjihouse/pre-commit-hooks
-  rev: '2.1.5'
+  rev: '3.0.0'
   hooks:
     - id: shellcheck
     - id: shfmt
